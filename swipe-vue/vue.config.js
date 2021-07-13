@@ -1,20 +1,28 @@
 const path = require('path');
 
-module.exports = {
+const PROD_CONFIG = {
+  lintOnSave: false,
+  publicPath: '/sandbox/swipe-vue',
+  outputDir:  '../assets',
+  assetsDir:  '../assets',
+  indexPath:  '../index.html',
+};
+
+const DEV_CONFIG = {
   lintOnSave: true,
-  filenameHashing: false,
+  publicPath: '/',
+  outputDir:  'assets',
+  assetsDir:  'assets',
+  indexPath:  'index.html',
+};
 
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/sandbox/swipe-vue'
-    : '/',
+module.exports = {
+  // Default shared configurations
 
-  chainWebpack: config => {
-    config.optimization.delete('splitChunks')
-  },
-
-  outputDir: path.resolve(__dirname, "../assets"),
-  assetsDir: "../assets",
-
-  // we want this at the root directory
-  indexPath: "../index.html"
+  // Environment overrides
+  ...(
+    process.env.NODE_ENV === 'production' 
+      ? PROD_CONFIG 
+      : DEV_CONFIG
+  ),
 };
