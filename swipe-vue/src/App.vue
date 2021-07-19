@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to SwipeApp, a Vue.js + TypeScript application" />
+  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
 </template>
 
 <script lang="ts">
