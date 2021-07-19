@@ -1,0 +1,22 @@
+name: Manually Revert
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The version to rollback to'
+        required: true
+
+jobs:
+  Undo:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+           ref: ${{ github.event.inputs.branch }}
+           fetch-depth: 0 
+      - name: Rolls back to a certain version
+        uses: fivebluepetals/rollback-action@v0.1
+        with:
+          branch: main
+          revision: ${{ github.event.inputs.version }}
