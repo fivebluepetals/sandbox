@@ -13,10 +13,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-           ref: ${{ github.event.inputs.branch }}
            fetch-depth: 0 
       - name: Rolls back to a certain version
-        uses: fivebluepetals/rollback-action@v0.1
+        uses: fivebluepetals/rollback-action@v1.0
         with:
           branch: main
           revision: ${{ github.event.inputs.version }}
